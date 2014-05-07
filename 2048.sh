@@ -86,6 +86,23 @@ function moveup {
 	done
 }
 
+function movedown {
+    for s in {1..3}
+    do
+        for i in {1..4}
+        do
+            for t in "$((i+12))" "$((i+8))" "$((i+4))"
+            do
+                if [ "$arr[$t]" = "" ]; then
+					arr[$t]="$arr[$((t-4))]"
+                    arr[$((t-4))]=""
+                fi
+            done
+        done
+    done
+
+}
+
 function makeleft {
 	moveleft
 	for i in {0..3}
@@ -142,9 +159,27 @@ function makeup {
     moveup	
 }
 
+function makedown {
+    movedown
+    for i in {1..4}
+    do
+        for t in "$((i+12))" "$((i+8))" "$((i+4))"
+        do
+            if [ "$arr[$t]" = "$arr[$((t-4))]" ]; then
+                if [ "$arr[$t]" != "" ]; then
+                    tmp=$arr[$t]
+                    arr[$t]=$((tmp*2))
+                    arr[$((t-4))]=""
+                fi
+            fi
+        done
+    done
+    movedown
+}
+
 addrandom
 addrandom
 printtable
-makeup
+makedown
 printtable
 
