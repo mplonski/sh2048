@@ -275,7 +275,7 @@ do
 
 	checkiflost
 	# add new '2' only if there was any move!
-	if [ "$moved" = "0" ]; then
+	if [ "$moved" = "1" ]; then
 		addrandom
 	fi
 	clear
