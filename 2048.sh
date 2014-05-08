@@ -54,7 +54,7 @@ function printtable {
 	echo ' │      │      │      │      │'
 	printf " | %-4s | %-4s | %-4s │ %-4s │\n" "$(cprint "$arr[13]")" "$(cprint "$arr[14]")" "$(cprint "$arr[15]")" "$(cprint "$arr[16]")"
 	echo ' │      │      │      │      │'
-	echo ' └──────┴──────┴──────┴──────┙'
+	echo ' └──────┴──────┴──────┴──────┘'
 }
 
 # checking if game is over
