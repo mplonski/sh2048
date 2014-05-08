@@ -2,6 +2,7 @@
 #
 # author: mplonski / sokoli
 # web: http://sokoli.pl
+# it's my first game in zsh, stay calm and fork / commit / pull request this repo :-)
 #
 # license: GNU GPL v2
 #
