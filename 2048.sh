@@ -234,20 +234,15 @@ do
 	read -sk key
 
 	case "$key" in
-		w)
-			makeup
+		w)  makeup
 			;;
-		s)
-			makedown
+		s)  makedown
 			;;
-		a)
-			makeleft
+		a)  makeleft
 			;;
-		d)
-			makeright
+		d)  makeright
 			;;
-		q)
-			exit 0
+		q)  exit 0
 			;;
 	esac
 
