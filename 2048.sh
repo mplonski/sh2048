@@ -35,6 +35,21 @@ function printtable {
 	echo ' -----------------------------'
 }
 
+# checking if game is over
+function checkiflost {
+	k=0
+	for i in {1..16}
+	do
+		if [ "$arr[i]" = '' ]; then
+			(( k++ ))
+		fi
+	done
+	if [ "$k" = "0" ]; then
+		echo "You lost!"
+		exit 0
+	fi
+}
+
 # adds '2' in random place
 function addrandom {
 	k=0
@@ -46,11 +61,6 @@ function addrandom {
 			tmp[$k]="$i"
 		fi
 	done
-	if [ "$k" = "0" ]
-	then
-		echo "You lost!"
-		exit 0
-	fi
 	ran=$[ $[ RANDOM % k ] + 1 ]
 	arr[$tmp[$ran]]=2
 }
@@ -226,32 +236,25 @@ do
 	case "$key" in
 		w)
 			makeup
-			clear
-			addrandom
-			printtable
 			;;
 		s)
 			makedown
-			clear
-			addrandom
-			printtable
 			;;
 		a)
 			makeleft
-			clear
-			addrandom
-			printtable
 			;;
 		d)
 			makeright
-			clear
-			addrandom
-			printtable
 			;;
 		q)
 			exit 0
 			;;
 	esac
+
+	checkiflost
+	addrandom
+	clear
+	printtable
 
 done
 
