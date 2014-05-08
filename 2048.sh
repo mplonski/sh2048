@@ -99,6 +99,7 @@ function moveleft {
 				if [ "$arr[$t]" = "" ]; then
 					arr[$t]="$arr[$((t+1))]"
 					arr[$((t+1))]=""
+					moved=1
 				fi
 			done
 		done
@@ -117,6 +118,7 @@ function moveright {
                 if [ "$arr[$t]" = "" ]; then
                     arr[$t]="$arr[$((t-1))]"
                     arr[$((t-1))]=""
+					moved=1
                 fi
             done
         done
@@ -134,6 +136,7 @@ function moveup {
 				if [ "$arr[$t]" = "" ]; then
 					arr[$t]="$arr[$((t+4))]"
 					arr[$((t+4))]=""
+					moved=1
 				fi
 			done
 		done
@@ -151,6 +154,7 @@ function movedown {
                 if [ "$arr[$t]" = "" ]; then
 					arr[$t]="$arr[$((t-4))]"
                     arr[$((t-4))]=""
+					moved=1
                 fi
             done
         done
@@ -255,6 +259,7 @@ do
 	# read 2 key
 	read -sk key
 
+	moved=0
 	case "$key" in
 		w)  makeup
 			;;
@@ -269,7 +274,10 @@ do
 	esac
 
 	checkiflost
-	addrandom
+	# add new '2' only if there was any move!
+	if [ "$moved" = "0" ]; then
+		addrandom
+	fi
 	clear
 	printtable
 
