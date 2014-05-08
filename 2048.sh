@@ -11,14 +11,14 @@
 arr=()
 
 # colors
-RED='\e[1;31m' ; GREEN='\e[1;32m' ; YELLOW='\e[1;33m' ; BLUE='\e[1;34m' ; MAGENTA='\e[1;35m' ; CYAN='\e[1;36m' NOR='\e[m'
+RED='\e[1;31m' ; GREEN='\e[1;32m' ; YELLOW='\e[1;33m' ; BLUE='\e[1;34m' ; MAGENTA='\e[1;35m' ; CYAN='\e[1;36m'; NOR='\e[m'; BOLD='\e[1m'
 
 # print using colors
 function cprint {
 	case "$1" in
 		'') printf "    "
 			;;
-		2) printf "  2 "
+		2) printf "${BOLD}  2 $NOR"
 			;;
 		4) printf "${CYAN}  4 $NOR"
 			;;
