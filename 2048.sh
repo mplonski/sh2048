@@ -187,7 +187,7 @@ function makedown {
 }
 
 function help {
-	echo "Exit: ctrl+c"
+	echo "Exit: q"
 	echo "Controls: w/s/a/d"
 }
 
@@ -228,6 +228,11 @@ else
 				clear
 				addrandom
 				printtable
+			else
+				if [ "$key" = "q" ]
+				then
+					exit 0
+				fi
 			fi
 		fi
 	fi
