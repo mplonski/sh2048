@@ -13,24 +13,46 @@ arr=()
 # colors - TODO
 RED='\e[1;31m' ; GREEN='\e[1;32m' ; YELLOW='\e[1;33m' ; BLUE='\e[1;34m' ; MAGENTA='\e[1;35m' ; CYAN='\e[1;36m' NOR='\e[m'
 
+# print using colors
+function cprint {
+	case "$1" in
+		'') printf "    "
+			;;
+		2) printf "  2 "
+			;;
+		4) printf "${CYAN}  4 $NOR"
+			;;
+		8) printf "${MAGENTA}  8 $NOR"
+			;;
+		16) printf "${BLUE} 16 $NOR"
+			;;
+		32) printf "${YELLOW} 32 $NOR"
+			;;
+		64) printf "${GREEN} 64 $NOR"
+			;;
+		*)  printf "${RED}%-4s$NOR" "$1"
+			;;
+	esac
+}
+
 # prints table with values from game
 function printtable {
 	help
 	echo ' -----------------------------'
 	echo ' |      |      |      |      |'
-	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[1]" "$arr[2]" "$arr[3]" "$arr[4]"
+	printf " | %4s | %4s | %4s | %4s |\n" "$(cprint "$arr[1]")" "$(cprint "$arr[2]")" "$(cprint "$arr[3]")" "$(cprint "$arr[4]")"
 	echo ' |      |      |      |      |'
 	echo ' |------|------|------|------|'
 	echo ' |      |      |      |      |'
-	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[5]" "$arr[6]" "$arr[7]" "$arr[8]"
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[5]")" "$(cprint "$arr[6]")" "$(cprint "$arr[7]")" "$(cprint "$arr[8]")"
 	echo ' |      |      |      |      |'
 	echo ' |------|------|------|------|'
 	echo ' |      |      |      |      |'
-	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[9]" "$arr[10]" "$arr[11]" "$arr[12]"
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[9]")" "$(cprint "$arr[10]")" "$(cprint "$arr[11]")" "$(cprint "$arr[12]")"
 	echo ' |      |      |      |      |'
 	echo ' |------|------|------|------|'
 	echo ' |      |      |      |      |'
-	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[13]" "$arr[14]" "$arr[15]" "$arr[16]"
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[13]")" "$(cprint "$arr[14]")" "$(cprint "$arr[15]")" "$(cprint "$arr[16]")"
 	echo ' |      |      |      |      |'
 	echo ' -----------------------------'
 }
