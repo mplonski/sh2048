@@ -1,31 +1,40 @@
 #!/bin/zsh
+#
+# author: mplonski / sokoli
+# web: http://sokoli.pl
+#
+# license: GNU GPL v2
+#
 
+# table used for keeping values from game
 arr=()
 
 # colors - TODO
 RED='\e[1;31m' ; GREEN='\e[1;32m' ; YELLOW='\e[1;33m' ; BLUE='\e[1;34m' ; MAGENTA='\e[1;35m' ; CYAN='\e[1;36m' NOR='\e[m'
 
+# prints table with values from game
 function printtable {
 	help
-	echo '-----------------------------'
-	echo '|      |      |      |      |'
-	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[1]" "$arr[2]" "$arr[3]" "$arr[4]"
-	echo '|      |      |      |      |'
-	echo '|------|------|------|------|'
-	echo '|      |      |      |      |'
-	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[5]" "$arr[6]" "$arr[7]" "$arr[8]"
-	echo '|      |      |      |      |'
-	echo '|------|------|------|------|'
-	echo '|      |      |      |      |'
-	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[9]" "$arr[10]" "$arr[11]" "$arr[12]"
-	echo '|      |      |      |      |'
-	echo '|------|------|------|------|'
-	echo '|      |      |      |      |'
-	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[13]" "$arr[14]" "$arr[15]" "$arr[16]"
-	echo '|      |      |      |      |'
-	echo '-----------------------------'
+	echo ' -----------------------------'
+	echo ' |      |      |      |      |'
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[1]" "$arr[2]" "$arr[3]" "$arr[4]"
+	echo ' |      |      |      |      |'
+	echo ' |------|------|------|------|'
+	echo ' |      |      |      |      |'
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[5]" "$arr[6]" "$arr[7]" "$arr[8]"
+	echo ' |      |      |      |      |'
+	echo ' |------|------|------|------|'
+	echo ' |      |      |      |      |'
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[9]" "$arr[10]" "$arr[11]" "$arr[12]"
+	echo ' |      |      |      |      |'
+	echo ' |------|------|------|------|'
+	echo ' |      |      |      |      |'
+	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$arr[13]" "$arr[14]" "$arr[15]" "$arr[16]"
+	echo ' |      |      |      |      |'
+	echo ' -----------------------------'
 }
 
+# adds '2' in random place
 function addrandom {
 	k=0
 	tmp=()
@@ -45,6 +54,7 @@ function addrandom {
 	arr[$tmp[$ran]]=2
 }
 
+# move data to the left
 function moveleft {
 	for s in {1..3}
 	do
@@ -62,6 +72,7 @@ function moveleft {
 	done
 }
 
+# move data to the right
 function moveright {
     for s in {1..3}
     do
@@ -79,6 +90,7 @@ function moveright {
     done
 }
 
+# move data up
 function moveup {
 	for s in {1..3}
 	do
@@ -95,6 +107,7 @@ function moveup {
 	done
 }
 
+# move data down
 function movedown {
     for s in {1..3}
     do
@@ -112,6 +125,7 @@ function movedown {
 
 }
 
+# add matching values (to the left)
 function makeleft {
 	moveleft
 	for i in {0..3}
@@ -131,6 +145,7 @@ function makeleft {
 	moveleft
 }
 
+# add matching values (to the right)
 function makeright {
     moveright
     for i in {4..1}
@@ -150,6 +165,7 @@ function makeright {
     moveright
 }
 
+# add matching values (to the top)
 function makeup {
     moveup
     for i in {1..4}
@@ -168,6 +184,7 @@ function makeup {
     moveup	
 }
 
+# add matching values (to the bottom)
 function makedown {
     movedown
     for i in {1..4}
@@ -186,57 +203,61 @@ function makedown {
     movedown
 }
 
+# help :)
 function help {
-	echo "Exit: q"
-	echo "Controls: w/s/a/d"
+	echo "\n Hi, my name is sh2048!"
+	echo " Exit: q"
+	echo " Controls: w/s/a/d"
 }
 
+# clear console, set 2 random numbers, print table
 clear
 addrandom
 addrandom
 printtable
 
+# have fun
 while true
 do
+	# read 2 key
+	read -sk key
 
-read -sk key
-
-if [ "$key" = "w" ]
-then
-	makeup
-	clear
-	addrandom
-	printtable
-else
-	if [ "$key" = "s" ]
+	if [ "$key" = "w" ]
 	then
-		makedown
+		makeup
 		clear
 		addrandom
 		printtable
 	else
-		if [ "$key" = "a" ]
+		if [ "$key" = "s" ]
 		then
-			makeleft
+			makedown
 			clear
 			addrandom
 			printtable
 		else
-			if [ "$key" = "d" ]
+			if [ "$key" = "a" ]
 			then
-				makeright
+				makeleft
 				clear
 				addrandom
 				printtable
 			else
-				if [ "$key" = "q" ]
+				if [ "$key" = "d" ]
 				then
-					exit 0
+					makeright
+					clear
+					addrandom
+					printtable
+				else
+					if [ "$key" = "q" ]
+					then
+						exit 0
+					fi
 				fi
 			fi
 		fi
 	fi
-fi
 
 done
 
