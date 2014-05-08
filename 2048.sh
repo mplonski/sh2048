@@ -2,24 +2,28 @@
 
 arr=()
 
+# colors - TODO
+RED='\e[1;31m' ; GREEN='\e[1;32m' ; YELLOW='\e[1;33m' ; BLUE='\e[1;34m' ; MAGENTA='\e[1;35m' ; CYAN='\e[1;36m' NOR='\e[m'
+
 function printtable {
+	help
 	echo '-----------------------------'
 	echo '|      |      |      |      |'
 	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[1]" "$arr[2]" "$arr[3]" "$arr[4]"
 	echo '|      |      |      |      |'
 	echo '|------|------|------|------|'
-    echo '|      |      |      |      |'
-    printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[5]" "$arr[6]" "$arr[7]" "$arr[8]"
-    echo '|      |      |      |      |'
-    echo '|------|------|------|------|'
-    echo '|      |      |      |      |'
-    printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[9]" "$arr[10]" "$arr[11]" "$arr[12]"
-    echo '|      |      |      |      |'
-    echo '|------|------|------|------|'
-    echo '|      |      |      |      |'
-    printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[13]" "$arr[14]" "$arr[15]" "$arr[16]"
-    echo '|      |      |      |      |'
-    echo '-----------------------------'
+	echo '|      |      |      |      |'
+	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[5]" "$arr[6]" "$arr[7]" "$arr[8]"
+	echo '|      |      |      |      |'
+	echo '|------|------|------|------|'
+	echo '|      |      |      |      |'
+	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[9]" "$arr[10]" "$arr[11]" "$arr[12]"
+	echo '|      |      |      |      |'
+	echo '|------|------|------|------|'
+	echo '|      |      |      |      |'
+	printf "| %-4s | %-4s | %-4s | %-4s |\n" "$arr[13]" "$arr[14]" "$arr[15]" "$arr[16]"
+	echo '|      |      |      |      |'
+	echo '-----------------------------'
 }
 
 function addrandom {
@@ -32,6 +36,11 @@ function addrandom {
 			tmp[$k]="$i"
 		fi
 	done
+	if [ "$k" = "0" ]
+	then
+		echo "You lost!"
+		exit 0
+	fi
 	ran=$[ $[ RANDOM % k ] + 1 ]
 	arr[$tmp[$ran]]=2
 }
@@ -177,9 +186,52 @@ function makedown {
     movedown
 }
 
+function help {
+	echo "Exit: ctrl+c"
+	echo "Controls: w/s/a/d"
+}
+
+clear
 addrandom
 addrandom
 printtable
-makedown
-printtable
+
+while true
+do
+
+read -sk key
+
+if [ "$key" = "w" ]
+then
+	makeup
+	clear
+	addrandom
+	printtable
+else
+	if [ "$key" = "s" ]
+	then
+		makedown
+		clear
+		addrandom
+		printtable
+	else
+		if [ "$key" = "a" ]
+		then
+			makeleft
+			clear
+			addrandom
+			printtable
+		else
+			if [ "$key" = "d" ]
+			then
+				makeright
+				clear
+				addrandom
+				printtable
+			fi
+		fi
+	fi
+fi
+
+done
 
