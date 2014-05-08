@@ -223,42 +223,35 @@ do
 	# read 2 key
 	read -sk key
 
-	if [ "$key" = "w" ]
-	then
-		makeup
-		clear
-		addrandom
-		printtable
-	else
-		if [ "$key" = "s" ]
-		then
+	case "$key" in
+		w)
+			makeup
+			clear
+			addrandom
+			printtable
+			;;
+		s)
 			makedown
 			clear
 			addrandom
 			printtable
-		else
-			if [ "$key" = "a" ]
-			then
-				makeleft
-				clear
-				addrandom
-				printtable
-			else
-				if [ "$key" = "d" ]
-				then
-					makeright
-					clear
-					addrandom
-					printtable
-				else
-					if [ "$key" = "q" ]
-					then
-						exit 0
-					fi
-				fi
-			fi
-		fi
-	fi
+			;;
+		a)
+			makeleft
+			clear
+			addrandom
+			printtable
+			;;
+		d)
+			makeright
+			clear
+			addrandom
+			printtable
+			;;
+		q)
+			exit 0
+			;;
+	esac
 
 done
 
