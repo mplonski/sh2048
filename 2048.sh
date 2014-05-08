@@ -96,7 +96,7 @@ function moveleft {
 			t1=$((4*i+1))
 			for t in {$t1..$((t1+2))}
 			do
-				if [ "$arr[$t]" = "" ]; then
+				if [ "$arr[$t]" = "" ] && [ "$arr[$((t+1))]" != "" ]; then
 					arr[$t]="$arr[$((t+1))]"
 					arr[$((t+1))]=""
 					moved=1
@@ -115,7 +115,7 @@ function moveright {
             t1=$((4*i))
             for t in {$t1..$((t1-2))}
             do
-                if [ "$arr[$t]" = "" ]; then
+				if [ "$arr[$t]" = "" ] && [ "$arr[$((t-1))]" != "" ]; then
                     arr[$t]="$arr[$((t-1))]"
                     arr[$((t-1))]=""
 					moved=1
@@ -133,7 +133,7 @@ function moveup {
 		do
 			for t in "$i" "$((i+4))" "$((i+8))"
 			do
-				if [ "$arr[$t]" = "" ]; then
+				if [ "$arr[$t]" = "" ] && [ "$arr[$((t+4))]" != "" ]; then
 					arr[$t]="$arr[$((t+4))]"
 					arr[$((t+4))]=""
 					moved=1
@@ -151,7 +151,7 @@ function movedown {
         do
             for t in "$((i+12))" "$((i+8))" "$((i+4))"
             do
-                if [ "$arr[$t]" = "" ]; then
+				if [ "$arr[$t]" = "" ] && [ "$arr[$((t-4))]" != "" ]; then
 					arr[$t]="$arr[$((t-4))]"
                     arr[$((t-4))]=""
 					moved=1
@@ -170,13 +170,11 @@ function makeleft {
 		t1=$((4*i+1))
 		for t in {$t1..$((t1+2))}
 		do
-			if [ "$arr[$t]" = "$arr[$((t+1))]" ]; then
-				if [ "$arr[$t]" != "" ]; then
-					tmp=$arr[$t]
-					arr[$t]=$((tmp*2))
-					arr[$((t+1))]=""
-					moved=1
-				fi
+			if [ "$arr[$t]" = "$arr[$((t+1))]" ] && [ "$arr[$t]" != "" ]; then
+				tmp=$arr[$t]
+				arr[$t]=$((tmp*2))
+				arr[$((t+1))]=""
+				moved=1
 			fi
 		done
 	done
@@ -191,13 +189,11 @@ function makeright {
         t1=$((4*i))
         for t in {$t1..$((t1-2))}
         do
-            if [ "$arr[$t]" = "$arr[$((t-1))]" ]; then
-                if [ "$arr[$t]" != "" ]; then
-                    tmp=$arr[$t]
-                    arr[$t]=$((tmp*2))
-                    arr[$((t-1))]=""
-					moved=1
-                fi
+            if [ "$arr[$t]" = "$arr[$((t-1))]" ] && [ "$arr[$t]" != "" ]; then
+				tmp=$arr[$t]
+                arr[$t]=$((tmp*2))
+                arr[$((t-1))]=""
+				moved=1
             fi
         done
     done
@@ -211,13 +207,11 @@ function makeup {
     do
         for t in "$i" "$((i+4))" "$((i+8))"
         do
-            if [ "$arr[$t]" = "$arr[$((t+4))]" ]; then
-                if [ "$arr[$t]" != "" ]; then
-                    tmp=$arr[$t]
-                    arr[$t]=$((tmp*2))
-                    arr[$((t+4))]=""
-					moved=1
-                fi
+            if [ "$arr[$t]" = "$arr[$((t+4))]" ] && [ "$arr[$t]" != "" ]; then
+				tmp=$arr[$t]
+                arr[$t]=$((tmp*2))
+                arr[$((t+4))]=""
+				moved=1
             fi
         done
     done
@@ -231,13 +225,11 @@ function makedown {
     do
         for t in "$((i+12))" "$((i+8))" "$((i+4))"
         do
-            if [ "$arr[$t]" = "$arr[$((t-4))]" ]; then
-                if [ "$arr[$t]" != "" ]; then
-                    tmp=$arr[$t]
-                    arr[$t]=$((tmp*2))
-                    arr[$((t-4))]=""
-					moved=1
-                fi
+            if [ "$arr[$t]" = "$arr[$((t-4))]" ] && [ "$arr[$t]" != "" ]; then
+				tmp=$arr[$t]
+                arr[$t]=$((tmp*2))
+                arr[$((t-4))]=""
+				moved=1
             fi
         done
     done
