@@ -38,23 +38,23 @@ function cprint {
 # prints table with values from game
 function printtable {
 	help
-	echo ' -----------------------------'
-	echo ' |      |      |      |      |'
-	printf " | %4s | %4s | %4s | %4s |\n" "$(cprint "$arr[1]")" "$(cprint "$arr[2]")" "$(cprint "$arr[3]")" "$(cprint "$arr[4]")"
-	echo ' |      |      |      |      |'
-	echo ' |------|------|------|------|'
-	echo ' |      |      |      |      |'
+	echo ' ┌──────┬──────┬──────┬──────┐'
+	echo ' │      │      │      │      │'
+	printf " | %4s │ %4s │ %4s │ %4s |\n" "$(cprint "$arr[1]")" "$(cprint "$arr[2]")" "$(cprint "$arr[3]")" "$(cprint "$arr[4]")"
+	echo ' │      │      │      │      │'
+	echo ' ├──────┼──────┼──────┼──────┤'
+	echo ' │      │      │      │      │'
 	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[5]")" "$(cprint "$arr[6]")" "$(cprint "$arr[7]")" "$(cprint "$arr[8]")"
-	echo ' |      |      |      |      |'
-	echo ' |------|------|------|------|'
-	echo ' |      |      |      |      |'
+	echo ' │      │      │      │      │'
+	echo ' ├──────┼──────┼──────┼──────┤'
+	echo ' │      │      │      │      │'
 	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[9]")" "$(cprint "$arr[10]")" "$(cprint "$arr[11]")" "$(cprint "$arr[12]")"
-	echo ' |      |      |      |      |'
-	echo ' |------|------|------|------|'
-	echo ' |      |      |      |      |'
-	printf " | %-4s | %-4s | %-4s | %-4s |\n" "$(cprint "$arr[13]")" "$(cprint "$arr[14]")" "$(cprint "$arr[15]")" "$(cprint "$arr[16]")"
-	echo ' |      |      |      |      |'
-	echo ' -----------------------------'
+	echo ' │      │      │      │      │'
+	echo ' ├──────┼──────┼──────┼──────┤'
+	echo ' │      │      │      │      │'
+	printf " | %-4s | %-4s | %-4s │ %-4s │\n" "$(cprint "$arr[13]")" "$(cprint "$arr[14]")" "$(cprint "$arr[15]")" "$(cprint "$arr[16]")"
+	echo ' │      │      │      │      │'
+	echo ' └──────┴──────┴──────┴──────┙'
 }
 
 # checking if game is over
