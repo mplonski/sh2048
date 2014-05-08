@@ -1,16 +1,11 @@
-sh2048
-======
+sh2048 - shell version of 2048 (based on [Gabriele Cirulli's version of 2048](http://gabrielecirulli.github.io/2048/))
 
-shell version of 2048 (based on [Gabriele Cirulli's version of 2048](http://gabrielecirulli.github.io/2048/))
-
-requiments
-----------
+### requiments
 
 * zsh
 * access to terminal
 
-how to run
-----------
+### how to run
 
 * download
 	* raw file: `wget https://github.com/mplonski/sh2048/raw/master/2048.sh`
@@ -18,8 +13,7 @@ how to run
 * make executable: `chmod a+x 2048.sh` (to make executable for everyone)
 * run: `./2048.sh`
 
-screenshot
-----------
+### screenshot
 
 ![screenshot](/screenshot.png)
 
