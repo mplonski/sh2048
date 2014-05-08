@@ -175,6 +175,7 @@ function makeleft {
 					tmp=$arr[$t]
 					arr[$t]=$((tmp*2))
 					arr[$((t+1))]=""
+					moved=1
 				fi
 			fi
 		done
@@ -195,6 +196,7 @@ function makeright {
                     tmp=$arr[$t]
                     arr[$t]=$((tmp*2))
                     arr[$((t-1))]=""
+					moved=1
                 fi
             fi
         done
@@ -214,6 +216,7 @@ function makeup {
                     tmp=$arr[$t]
                     arr[$t]=$((tmp*2))
                     arr[$((t+4))]=""
+					moved=1
                 fi
             fi
         done
@@ -233,6 +236,7 @@ function makedown {
                     tmp=$arr[$t]
                     arr[$t]=$((tmp*2))
                     arr[$((t-4))]=""
+					moved=1
                 fi
             fi
         done
@@ -275,7 +279,7 @@ do
 
 	checkiflost
 	# add new '2' only if there was any move!
-	if [ "$moved" = "1" ]; then
+	if [ $moved -eq 1 ]; then
 		addrandom
 	fi
 	clear
