@@ -13,8 +13,8 @@ how to run
 ----------
 
 * download
-	* download raw file
-	* (or) fork
+	* raw file
+	* (or) clone repo
 * make executable: `chmod a+x 2048.sh` (to make executable for everyone)
 * run: `./2048.sh`
 
