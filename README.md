@@ -18,3 +18,8 @@ how to run
 * make executable: `chmod a+x 2048.sh` (to make executable for everyone)
 * run: `./2048.sh`
 
+screenshot
+----------
+
+![screenshot](/screenshot.png)
+
